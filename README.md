@@ -1,4 +1,4 @@
-LolliPin [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-LolliPin-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1425)
+[![](https://jitpack.io/v/DeltAagent00/LolliPin.svg)](https://jitpack.io/#DeltAagent00/LolliPin)
 ================
 
 A Lollipop material design styled android pincode library (API 14+)

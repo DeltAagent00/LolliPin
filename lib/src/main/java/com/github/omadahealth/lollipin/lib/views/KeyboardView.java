@@ -20,9 +20,10 @@ import java.util.List;
 public class KeyboardView extends LinearLayout implements View.OnClickListener {
 
     private Context mContext;
-    private KeyboardButtonClickedListener mKeyboardButtonClickedListener;
+    protected KeyboardButtonClickedListener mKeyboardButtonClickedListener;
 
-    private List<KeyboardButtonView> mButtons;
+    protected List<KeyboardButtonView> mButtons;
+    protected KeyboardButtonView fingerprintBtnView;
 
     public KeyboardView(Context context) {
         this(context, null);
@@ -39,7 +40,7 @@ public class KeyboardView extends LinearLayout implements View.OnClickListener {
         initializeView(attrs, defStyleAttr);
     }
 
-    private void initializeView(AttributeSet attrs, int defStyleAttr) {
+    protected void initializeView(AttributeSet attrs, int defStyleAttr) {
         if (!isInEditMode()) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             KeyboardView view = (KeyboardView) inflater.inflate(R.layout.view_keyboard, this);
@@ -51,7 +52,7 @@ public class KeyboardView extends LinearLayout implements View.OnClickListener {
     /**
      * Init the keyboard buttons (onClickListener)
      */
-    private void initKeyboardButtons(KeyboardView view) {
+    protected void initKeyboardButtons(KeyboardView view) {
         mButtons = new ArrayList<>();
         mButtons.add((KeyboardButtonView) view.findViewById(R.id.pin_code_button_0));
         mButtons.add((KeyboardButtonView) view.findViewById(R.id.pin_code_button_1));
@@ -64,6 +65,8 @@ public class KeyboardView extends LinearLayout implements View.OnClickListener {
         mButtons.add((KeyboardButtonView) view.findViewById(R.id.pin_code_button_8));
         mButtons.add((KeyboardButtonView) view.findViewById(R.id.pin_code_button_9));
         mButtons.add((KeyboardButtonView) view.findViewById(R.id.pin_code_button_clear));
+
+        fingerprintBtnView = (KeyboardButtonView) view.findViewById(R.id.pin_code_button_fingerprint);
 
         for(View button : mButtons) {
             button.setOnClickListener(this);
@@ -110,6 +113,18 @@ public class KeyboardView extends LinearLayout implements View.OnClickListener {
         this.mKeyboardButtonClickedListener = keyboardButtonClickedListener;
         for(KeyboardButtonView button : mButtons) {
             button.setOnRippleAnimationEndListener(mKeyboardButtonClickedListener);
+        }
+    }
+
+    public void showFingerprintView() {
+        if (fingerprintBtnView != null) {
+            fingerprintBtnView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideFingerprintView() {
+        if (fingerprintBtnView != null) {
+            fingerprintBtnView.setVisibility(View.INVISIBLE);
         }
     }
 }

@@ -129,12 +129,12 @@ public class KeyboardView extends LinearLayout implements View.OnClickListener {
     }
 
     public KeyboardButtonView getFingerprintBtnView() {
-        return fingerprintBtnView
+        return fingerprintBtnView;
     }
 
     public void setFingerprintOnClickListener(KeyboardButtonClickedListener keyboardButtonClickedListener) {
         if (fingerprintBtnView != null) {
-            fingerprintBtnView.setOnRippleAnimationEndListener(keyboardButtonClickedListener)
+            fingerprintBtnView.setOnRippleAnimationEndListener(keyboardButtonClickedListener);
         }
     }
 }

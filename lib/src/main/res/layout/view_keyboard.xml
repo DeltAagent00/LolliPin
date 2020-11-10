@@ -121,7 +121,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:lp_keyboard_button_ripple_enabled="false"
             app:lp_keyboard_button_image="@drawable/ic_fingerprint_24dp"/>
 
     </LinearLayout>
